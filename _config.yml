@@ -1,8 +1,8 @@
 # Site wide configuration
 
-title:            Site Title
+title:            Nerdguments
 locale:           en_US
-url:              
+url:              #http://www.nerdguments.com
 
 
 # Jekyll configuration
@@ -26,12 +26,12 @@ kramdown:
 
 # Site owner
 owner:
-  name: Your Name
+  name: Mike Sigsworth
   avatar: bio-photo.jpg
-  bio: "Describe your self."
-  email: 
-  disqus-shortname: 
-  twitter: #username
+  bio: "I'm a software developer who thinks he might know a thing or two about .NET, Angular, and DDD."
+  email: nerdguments@gmail.com
+  disqus-shortname: mikesigs
+  twitter: aspnetdev
   facebook: #username
   google:
     plus: #username
@@ -40,9 +40,9 @@ owner:
     ad-client: 
     ad-slot: 
   bing-verify: 
-  github: #username
-  stackoverflow: #http://stackoverflow.com/users/123456/username
-  linkedin: #username
+  github: mikesigs
+  stackoverflow: 219521
+  linkedin: mikesigs
   xing: #username
   instagram: #username
   lastfm: #username
