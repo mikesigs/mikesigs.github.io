@@ -149,10 +149,11 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  github-pages
+  github-pages (= 51)
   jekyll
   jekyll-gist
   jekyll-sitemap
+  json
   octopress (~> 3.0.0.rc.12)
   wdm (~> 0.1.0)
 
