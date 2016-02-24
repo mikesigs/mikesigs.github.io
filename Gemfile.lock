@@ -89,6 +89,10 @@ PLATFORMS
 
 DEPENDENCIES
   jekyll
+  jekyll-gist
   jekyll-sitemap
   octopress (~> 3.0.0.rc.12)
-  wdm (>= 0.1.0)
+  wdm (~> 0.1.0)
+
+BUNDLED WITH
+   1.10.6

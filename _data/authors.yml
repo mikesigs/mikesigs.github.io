@@ -1,20 +1,32 @@
 # Authors
 
-billy_rick:
-  name: Billy Rick
-  web: http://thewhip.com
-  email: billy@rick.com
-  bio: "What do you want, jewels? I am a very extravagant man."
-  avatar: bio-photo-2.jpg
-  twitter: extravagantman
-  google:
-    plus: BillyRick
-
-cornelius_fiddlebone:
-  name: Cornelius Fiddlebone
-  email: cornelius@thewhip.com
-  bio: "I ordered what?"
+mikesigs:
+  name: Mike Sigsworth
+  bio: "I love to code. And I love to talk about code.<br/>"
   avatar: bio-photo.jpg
-  twitter: rhymeswithsackit
+  email: nerdguments@gmail.com
+  disqus-shortname: mikesigs
+  twitter: aspnetdev
+  facebook: #username
   google:
-    plus: CorneliusFiddlebone
+    plus: #username
+    analytics: 
+    verify: 
+    ad-client: 
+    ad-slot: 
+  bing-verify: 
+  github: mikesigs
+  stackoverflow: 219521
+  linkedin: mikesigs
+  xing: #username
+  instagram: #username
+  lastfm: #username
+  tumblr: #username
+  pinterest: #username
+  foursquare: #username
+  steam: #username
+  dribbble: #username
+  youtube: #username
+  soundcloud: #username
+  weibo: #username
+  flickr: #username

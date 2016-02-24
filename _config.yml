@@ -1,9 +1,10 @@
 # Site wide configuration
 
-title:            Nerdguments
-locale:           en_US
-url:              #http://www.nerdguments.com
-
+title:    nerdguments
+locale:   en_CA
+url:      #https://www.nerdguments.com
+timezone: America/Edmonton
+encoding: UTF-8
 
 # Jekyll configuration
 
@@ -15,20 +16,38 @@ sass:
   style: compressed
 gems:
   - jekyll-sitemap
+  - jekyll-gist
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: mikesigs
+      comments: true
+      image:
+        feature: northern-lights/1.png
+        credit: Tidewater Muse
+        creditlink: https://www.flickr.com/photos/tidewatermuse/493237869/
 
 kramdown:
+  input: GFM
   auto_ids: true
   footnote_nr: 1
   entity_output: as_char
   toc_levels: 1..6
   use_coderay: false
 
+gist:
+  noscript: false
 
 # Site owner
 owner:
+  bio: "I love to code.And I love to talk about code.<br/>"
   name: Mike Sigsworth
   avatar: bio-photo.jpg
-  bio: "I'm a software developer who thinks he might know a thing or two about .NET, Angular, and DDD."
   email: nerdguments@gmail.com
   disqus-shortname: mikesigs
   twitter: aspnetdev
