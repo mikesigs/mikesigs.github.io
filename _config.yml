@@ -27,10 +27,6 @@ defaults:
       layout: "post"
       author: mikesigs
       comments: true
-      image:
-        feature: northern-lights/1.png
-        credit: Tidewater Muse
-        creditlink: https://www.flickr.com/photos/tidewatermuse/493237869/
 
 kramdown:
   input: GFM

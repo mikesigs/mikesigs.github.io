@@ -53,10 +53,17 @@ $youtube-color      : #ff3333;
 
 /* links */
 $linkcolor 		    : #343434;
-$link-color       : $linkcolor;
+$link-color         : $linkcolor;
 $linkcolorhover 	: darken($linkcolor, 10);
-$linkcolorvisited : lighten($linkcolorhover, 20);
+$linkcolorvisited   : lighten($linkcolorhover, 20);
 $linkcolorfocus 	: darken($linkcolorvisited, 10);
+
+$linkcolor-inverted         : #e2e2e2;
+$link-color-inverted        : $linkcolor-inverted;
+$linkcolorhover-inverted 	: lighten($linkcolor-inverted, 50);
+$linkcolorvisited-inverted  : darken($linkcolorhover-inverted, 10);
+$linkcolorfocus-inverted 	: darken($linkcolorvisited-inverted, 10);
+
 
 /* 
    Breakpoints

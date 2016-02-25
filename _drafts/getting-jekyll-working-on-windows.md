@@ -10,6 +10,10 @@ Before we start anything, the first thing we're gonna do is install Chocolatey. 
 There's two ways to install Chocolatey. 
 1. Open *cmd* (wiht Admin) and run:
 ```@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin```
+{% highlight bash %}
+@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
+{% endhighlight %}
+
 2. Open *PowerShell* and run:
 ```iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))```
 

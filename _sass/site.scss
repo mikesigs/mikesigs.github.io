@@ -63,6 +63,17 @@
 	}
 }
 
+/* Visually Hidden */
+.visually-hidden {
+    width: 1;
+    height: 1;
+    clip: rect(0px,0px,0px,0px); 
+    overflow:hidden; 
+    margin: -1px;
+    position: absolute; 
+    border: 0 none;
+}
+
 /* 
    Global transition
    ========================================================================== */

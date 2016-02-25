@@ -1,19 +1,22 @@
 <div class="navigation-wrapper">
-	<div class="site-name">
-		<a href="{{ site.url }}/">{{ site.title }}</a>
-	</div><!-- /.site-name -->
-	<div class="top-navigation">
-		<nav role="navigation" id="site-nav" class="nav">
-		    <ul>
-		        {% for link in site.data.navigation %}
-				    {% if link.url contains 'http' %}
-				        {% assign domain = '' %}
-				        {% else %}
-				        {% assign domain = site.url %}
-				    {% endif %}
-				    <li><a href="{{ domain }}{{ link.url }}" {% if link.url contains 'http' %}target="_blank"{% endif %}>{{ link.title }}</a></li>
-				{% endfor %}
-		    </ul>
-		</nav>
-	</div><!-- /.top-navigation -->
-</div><!-- /.navigation-wrapper -->
+    <div class="site-name">
+        <a class="inverted" href="{{ site.url }}/">{{ site.title }}</a>
+    </div>
+    <!-- /.site-name -->
+    <div class="top-navigation">
+        <nav role="navigation" id="site-nav" class="nav">
+            <ul>
+                {% for link in site.data.navigation %} {% if link.url contains 'http' %} {% assign domain = '' %} {% else %} {% assign domain = site.url %} {% endif %}
+                <li><a href="{{ domain }}{{ link.url }}" class="inverted" {% if link.url contains 'http' %}target="_blank" {% endif %}>{{ link.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </div>
+    <!-- /.top-navigation -->
+    <div class="image-credit">
+        <img src="{{ site.data.images.site-header.url }}" alt="Site Header Image" class="visually-hidden">
+        <a class="info" href="{{ site.data.images.site-header.creditlink }}" target="_blank">
+            <i class="fa fa-info-circle"></i> <span>Photo Credit: {{ site.data.images.site-header.credit }}</span></a>
+    </div>
+</div>
+<!-- /.navigation-wrapper -->
