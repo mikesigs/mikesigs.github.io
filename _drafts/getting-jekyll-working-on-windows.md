@@ -8,34 +8,49 @@ tags: [jekyll, ruby, windows]
 Before we start anything, the first thing we're gonna do is install Chocolatey. If you already use Chocolatey, you can skip this step.
 
 There's two ways to install Chocolatey. 
-1. Open *cmd* (wiht Admin) and run:
-```@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin```
-{% highlight bash %}
-@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
-{% endhighlight %}
+Open *cmd* (wiht Admin) and run:
 
-2. Open *PowerShell* and run:
-```iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))```
+```powershell
+C:\> @powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-
+object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && 
+SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
+```
+
+Open *PowerShell* and run:
+
+```powershell
+C:\> iex ((new-object 
+net.webclient).DownloadString('https://chocolatey.org/install.ps1'))
+```
 
 Close and reopen a new command prompt (with Admin)
 
 ### Install Ruby
-```cinst ruby -y```
+```powershell
+C:\> cinst ruby -y
+```
 
 ### Install Ruby DevKit (required for rdiscount, redcarpet, and wdm)
-``` cinst ruby2.devkit```
+```powershell
+C:\> cinst ruby2.devkit
+```
 
 Edit *c:\bin\DevKit2*
-Add ``` - c:\bin\ruby22\```
+Add ` - c:\bin\ruby22\`
 
-```ruby dk.rb install```
+```powershell
+C:\bin\DevKit2\> ruby dk.rb install
+```
 
 ### Install Bundler
-```gem install bundler```
+```powershell
+C:\> gem install bundler
+```
 
 ### Fix the stupid SSL certs with RubyGems
-```cd c:\bin\ruby22\lib\ruby\2.2.0\rubygems\ssl_certs\```
-```curl -Ok https://curl.haxx.se/ca/cacert.pem```
+```powershell
+c:\bin\ruby22\lib\ruby\2.2.0\rubygems\ssl_certs\> curl -Ok https://curl.haxx.se/ca/cacert.pem
+```
 
 Set system env var: ```SSL_CERT_FILE=c:\bin\ruby22\lib\ruby\2.2.0\rubygems\ssl_certs\cacert.pem```
 
@@ -43,7 +58,7 @@ Set system env var: ```SSL_CERT_FILE=c:\bin\ruby22\lib\ruby\2.2.0\rubygems\ssl_c
 Hmmmm...
 
 ### Gemfile should look like this
-```
+```ruby
 source 'https://rubygems.org'
 require 'json'
 require 'open-uri'
@@ -59,11 +74,13 @@ gem 'wdm', '~> 0.1.0' if Gem.win_platform?
 ```
 
 ### Install Gems
-```
+```powershell
 bundle update
 bundle install
 ```
 
 ### Run your site
-```bundle exec jekyll serve```
+```powershell
+bundle exec jekyll serve
+```
 

@@ -10,10 +10,10 @@ encoding: UTF-8
 
 permalink:   /:categories/:title/
 markdown:    kramdown
-highlighter: rouge
 sass:
   sass_dir: _sass
   style: compressed
+  
 gems:
   - jekyll-sitemap
   - jekyll-gist
@@ -30,6 +30,7 @@ defaults:
 
 kramdown:
   input: GFM
+  syntax_highlighter: rouge
   auto_ids: true
   footnote_nr: 1
   entity_output: as_char

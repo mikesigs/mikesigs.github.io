@@ -151,6 +151,10 @@ p {
 
 tt, code, kbd, samp, pre {
 	font-family: $code-font;
+    .language-bat {   
+        background-color: #555;
+        color: #fafafa;
+    }
 }
 p,
 li { 
