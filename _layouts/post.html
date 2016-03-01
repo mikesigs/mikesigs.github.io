@@ -37,7 +37,7 @@
   </div>
   <article class="post">
     <div class="headline-wrap">
-      <div class="posted-date pull-right">Posted by {{ author.name }} on <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time></div>
+      <small class="posted-date pull-right">Posted by <a href="{{site.url}}" rel="author">{{ author.name }}</a> on <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time></small>
     </div>
       {% if page.link %}
         <h1><a href="{{ page.link }}">{{ page.title }}</a></h1>
