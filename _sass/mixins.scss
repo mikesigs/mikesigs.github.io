@@ -93,10 +93,6 @@
   white-space: nowrap; 
 }
 
-/* Indentation variable */
-
-$indent-var: 0rem + ($doc-line-height / $doc-font-size);
-
 /* ==========================================================================
    Gradient mixins
    ========================================================================== */

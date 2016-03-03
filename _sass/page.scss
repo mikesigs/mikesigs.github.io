@@ -495,12 +495,17 @@ $button-size: 1.5rem;
     p > a,
     li > a {
         text-decoration: underline;
-        &[href^="http://"]:not([href*="nerdguments.com"]):after {
+        position: relative;
+        &[target="_blank"]:not([href*="nerdguments.com"]):hover:after {
             content: "\f08e";
             font-family: FontAwesome;
             padding-left: .15rem;
-            font-size: .5em;
+            font-size: .6em;
             vertical-align: super;
+            display: block;
+            position: absolute;
+            right: -.5rem;
+            top: 0;
         }
     }
 }

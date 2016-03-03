@@ -6,8 +6,7 @@ tags: [jekyll, ruby, windows]
 It's been almost a year since I started this blog. Sad to say, this is only post #2. Right after I got everything set up and published my first post, wouldn't ya know it... my machine died on me. I recall it being kind of a pain getting Jekyll working on Windows and I just couldn't bring myself to start all over again. Fortunately, a lot has changed in the last 10 months and it is now a cinch to install Jekyll on Windows. Let's get started!
 
 ### Install Chocolatey
-
-First of all. If you don't have this magnificent tool installed, now's the time. No really. Now _is_ the time, because you're going to need it to follow the rest of these instructions.
+First of all, if you don't [Chocolatey](https://chocolatey.org/){:target="_blank"} installed, now's the time. No, really. Now _is_ the time because you're going to need it to follow the rest of these instructions.
 
 Open **cmd** as Admin and run the following command:
 
@@ -19,7 +18,24 @@ SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
 
 Now, close and reopen **cmd** as Admin. 
 
-Truth be told, **cmd** is ugly and a pain to work with. Do yourself a favor and checkout [cmder](http://cmder.net/). It's not required for any of this to work, but it will make your world a better place since you'll be spending a lot of time in the console with Jekyll. (P.S. You can install it with Chocolatey.)
+### Cmd... Really?
+Truth be told, **cmd** is ugly and a pain to work with. Let's install something better.
+
+Personally, I like [cmder](http://cmder.net/){:target="_blank"}. It uses [Conemu](https://conemu.github.io/){:target="_blank"}, [Clink](https://mridgers.github.io/clink/){:target="_blank"}, and [msysgit](https://msysgit.github.io/){:target="_blank"} to provide a superior console on Windows. It looks great out of the box too, using the Monokai color scheme. It's also extensible via Lua scripts. Leave a comment below if you'd like to hear more about some of the Lua customizations I use in my own setup.
+
+You can install cmder using Chocolatey by running this command:
+
+```powershell
+C:\> cinst cmder -y
+```
+
+Another alternative is to use [posh-git](https://dahlbyk.github.io/posh-git/){:target="_blank"}, a PowerShell environment for Git, which gets installed with [GitHub for Windows](https://desktop.github.com/){:target="_blank"}. I've heard good things, but don't use it myself. You can install it using Chocolatey too by running this command:
+
+```powershell
+C:\> cinst github -y
+```
+
+Neither of those fancy-shmancy shells are really necessary to get Jekyll running on Windows. But trust me, between Jekyll and Git, you'll be spending a lot more time in the console and it will only make your life better by having one installed. Perhaps the biggest gift provided by each is the msysgit tools, which I do actually use later in these instructions. So yeah, it's "*optional*", but only if you hate yourself.
 
 ### Install Ruby
 Now that we have Chocolatey installed we can very easily install Ruby like so:
@@ -28,9 +44,10 @@ Now that we have Chocolatey installed we can very easily install Ruby like so:
 C:\> cinst ruby -y
 ```
 
-This installs Ruby 2.2.4 (at the time of writing) to `C:\Tools\ruby22\`. If for some reason you don't find it there, check the value of your `%ChocolateyBinRoot%` env variable. 
+This installs Ruby (version 2.2.4 at the time of writing) to `C:\Tools\ruby22\`. If for some reason you don't find it there, check the value of the `%ChocolateyBinRoot%` environment variable to see where Chocolatey installs portable/stand-alone apps by default.
 
-There are a few Gems that rely on the Ruby DevKit to be installed. So let's install that too:
+### Ruby DevKit
+There are a number of Gems that require the Ruby DevKit to be installed. Let's install that too:
 
 ```powershell
 C:\> cinst ruby2.devkit
@@ -44,47 +61,24 @@ Save and close the file and run the next command to complete the DevKit installa
 C:\Tools\DevKit2\> ruby dk.rb install
 ```
 
-### Install Bundler
+### Update RubyGems SSL Certs
+This is the part that frustrated me the most, and was the real motivation for writing this post in the first place.
+
+A year ago when I first setup all this stuff the SSL certs in RubyGems on Windows were all old and broken and you couldn't even install gems without first changing the source to a non-https source. Fortunately, recent versions seem to have fixed this... kind of. I still ran into SSL errors when trying to follow the instructions for [configuring the github-pages gem](https://jekyllrb.com/docs/github-pages/){:target="_blank"}. Which, if you're using Jekyll and plan to deploy to GitHub Pages, you're going to want to use that gem too.
+
+The solution is to download the latest and greatest bundle of CA Root Certificates and tell RubyGems where to find it by setting an environment variable. You can download the file manually from <https://curl.haxx.se/ca/cacert.pem> and save it in `C:\Tools\ruby22\lib\ruby\2.2.0\rubygems\sslcerts\`. 
+
+Or if you have msysgit installed you can download it using `curl` by running the following command:
 
 ```powershell
-C:\> gem install bundler
+C:\> curl -Lk https://curl.haxx.se/ca/cacert.pem -o "C:\Tools\ruby22\lib\ruby\2.2.0\rubygems\ssl_certs\cacert.pem"
 ```
 
-### Fix the stupid SSL certs with RubyGems
-```powershell
-C:\Tools\ruby22\lib\ruby\2.2.0\rubygems\ssl_certs\> curl -Ok https://curl.haxx.se/ca/cacert.pem
-```
+However you did it, you're gonna need to create a system environment variable `SSL_CERT_FILE` and set it to `c:\bin\ruby22\lib\ruby\2.2.0\rubygems\ssl_certs\cacert.pem` so RubyGems knows where to find the updated cert file.
 
-Set system env var: ```SSL_CERT_FILE=c:\bin\ruby22\lib\ruby\2.2.0\rubygems\ssl_certs\cacert.pem```
+### Off To The Races
+That's it. You're now ready to create your site using Jekyll. You can start from scratch using `jekyll new mySite`, or you can clone an existing theme (what I did). There's a great list [here](https://github.com/jekyll/jekyll/wiki/Themes){:target="_blank"}.
 
-### Generate your site
-Hmmmm...
-
-### Gemfile should look like this
-```ruby
-source 'https://rubygems.org'
-require 'json'
-require 'open-uri'
-
-versions = JSON.parse(open('https://pages.github.com/versions.json').read)
-
-gem 'github-pages', versions['github-pages']
-gem 'jekyll'
-gem 'jekyll-sitemap'
-gem 'jekyll-gist'
-gem 'octopress', '~> 3.0.0.rc.12'
-gem 'wdm', '~> 0.1.0' if Gem.win_platform?
-```
-
-### Install Gems
-```powershell
-bundle update
-bundle install
-```
-
-### Run your site
-```powershell
-bundle exec jekyll serve
-```
+Happy blogging!
 
 
